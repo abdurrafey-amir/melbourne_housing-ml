@@ -20,15 +20,15 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("1440x1024")
+window.geometry("1080x720")
 window.configure(bg = "#273F43")
 
 
 canvas = Canvas(
     window,
     bg = "#273F43",
-    height = 1024,
-    width = 1440,
+    height = 720,
+    width = 1080,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge"
@@ -36,36 +36,36 @@ canvas = Canvas(
 
 canvas.place(x = 0, y = 0)
 canvas.create_text(
-    320.0,
-    196.0,
+    300.0,
+    100.0,
     anchor="nw",
-    text="House price predictor",
+    text="House price AI",
     fill="#FFFFFF",
     font=("Inter", 72 * -1)
 )
 
 canvas.create_rectangle(
-    376.0,
-    334.0,
-    1064.0,
-    896.0,
+    196.0,
+    222.0,
+    884.0,
+    674.0,
     fill="#161B22",
     outline="")
 
 canvas.create_text(
-    427.0,
-    378.0,
+    263.0,
+    264.0,
     anchor="nw",
     text="Rooms",
     fill="#FFFFFF",
-    font=("Inter", 36 * -1)
+    font=("Inter", 30 * -1)
 )
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
-    805.5,
-    400.0,
+    642.5,
+    278.5,
     image=entry_image_1
 )
 entry_1 = Entry(
@@ -75,26 +75,26 @@ entry_1 = Entry(
     highlightthickness=0
 )
 entry_1.place(
-    x=598.0,
-    y=382.0,
+    x=435.0,
+    y=263.0,
     width=415.0,
-    height=34.0
+    height=29.0
 )
 
 canvas.create_text(
-    427.0,
-    729.0,
+    230.0,
+    548.0,
     anchor="nw",
-    text="Rooms",
+    text="Longtitude",
     fill="#FFFFFF",
-    font=("Inter", 36 * -1)
+    font=("Inter", 30 * -1)
 )
 
 entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
-    805.5,
-    749.0,
+    642.5,
+    569.5,
     image=entry_image_2
 )
 entry_2 = Entry(
@@ -104,26 +104,26 @@ entry_2 = Entry(
     highlightthickness=0
 )
 entry_2.place(
-    x=598.0,
-    y=731.0,
+    x=435.0,
+    y=554.0,
     width=415.0,
-    height=34.0
+    height=29.0
 )
 
 canvas.create_text(
-    427.0,
-    466.0,
+    272.0,
+    336.0,
     anchor="nw",
-    text="Rooms",
+    text="Baths",
     fill="#FFFFFF",
-    font=("Inter", 36 * -1)
+    font=("Inter", 30 * -1)
 )
 
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
-    805.5,
-    484.0,
+    642.5,
+    351.5,
     image=entry_image_3
 )
 entry_3 = Entry(
@@ -133,26 +133,26 @@ entry_3 = Entry(
     highlightthickness=0
 )
 entry_3.place(
-    x=598.0,
-    y=466.0,
+    x=435.0,
+    y=336.0,
     width=415.0,
-    height=34.0
+    height=29.0
 )
 
 canvas.create_text(
-    427.0,
-    554.0,
+    252.0,
+    402.0,
     anchor="nw",
-    text="Rooms",
+    text="Landsize",
     fill="#FFFFFF",
-    font=("Inter", 36 * -1)
+    font=("Inter", 30 * -1)
 )
 
 entry_image_4 = PhotoImage(
     file=relative_to_assets("entry_4.png"))
 entry_bg_4 = canvas.create_image(
-    805.5,
-    571.0,
+    642.5,
+    423.5,
     image=entry_image_4
 )
 entry_4 = Entry(
@@ -162,26 +162,26 @@ entry_4 = Entry(
     highlightthickness=0
 )
 entry_4.place(
-    x=598.0,
-    y=553.0,
+    x=435.0,
+    y=408.0,
     width=415.0,
-    height=34.0
+    height=29.0
 )
 
 canvas.create_text(
-    427.0,
-    642.0,
+    252.0,
+    476.0,
     anchor="nw",
-    text="Rooms",
+    text="Latitude",
     fill="#FFFFFF",
-    font=("Inter", 36 * -1)
+    font=("Inter", 30 * -1)
 )
 
 entry_image_5 = PhotoImage(
     file=relative_to_assets("entry_5.png"))
 entry_bg_5 = canvas.create_image(
-    805.5,
-    660.0,
+    642.5,
+    497.5,
     image=entry_image_5
 )
 entry_5 = Entry(
@@ -191,11 +191,20 @@ entry_5 = Entry(
     highlightthickness=0
 )
 entry_5.place(
-    x=598.0,
-    y=642.0,
+    x=435.0,
+    y=482.0,
     width=415.0,
-    height=34.0
+    height=29.0
 )
+
+def get_inp():
+    rooms = entry_1.get()
+    baths = entry_2.get()
+    land = entry_3.get()
+    lat = entry_4.get()
+    lon = entry_5.get()
+    return rooms, baths, land, lat, lon
+
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
@@ -203,14 +212,16 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: print(get_inp()),
     relief="flat"
 )
 button_1.place(
-    x=559.0,
-    y=801.0,
-    width=322.0,
-    height=76.0
+    x=420.0,
+    y=603.0,
+    width=248.0000157356244,
+    height=61.000003993510745
 )
-window.resizable(False, False)
+
+
+window.resizable(True, True)
 window.mainloop()
