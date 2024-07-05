@@ -74,7 +74,9 @@ entry_bg_1 = canvas.create_image(
 entry_1 = Entry(
     bd=0,
     bg="#273F43",
-    fg="#000716",
+    fg="#FFFFFF",
+    font="Helvetica",
+    justify="left",
     highlightthickness=0
 )
 entry_1.place(
@@ -88,25 +90,27 @@ canvas.create_text(
     230.0,
     548.0,
     anchor="nw",
-    text="Longtitude",
+    text="Longitude",
     fill="#FFFFFF",
     font=("Inter", 30 * -1)
 )
 
-entry_image_2 = PhotoImage(
-    file=relative_to_assets("entry_2.png"))
-entry_bg_2 = canvas.create_image(
+entry_image_5 = PhotoImage(
+    file=relative_to_assets("entry_5.png"))
+entry_bg_5 = canvas.create_image(
     642.5,
     569.5,
-    image=entry_image_2
+    image=entry_image_5
 )
-entry_2 = Entry(
+entry_5 = Entry(
     bd=0,
     bg="#273F43",
-    fg="#000716",
+    fg="#FFFFFF",
+    font="Helvetica",
+    justify="left",
     highlightthickness=0
 )
-entry_2.place(
+entry_5.place(
     x=435.0,
     y=554.0,
     width=415.0,
@@ -122,20 +126,22 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
-entry_image_3 = PhotoImage(
-    file=relative_to_assets("entry_3.png"))
-entry_bg_3 = canvas.create_image(
+entry_image_2 = PhotoImage(
+    file=relative_to_assets("entry_2.png"))
+entry_bg_2 = canvas.create_image(
     642.5,
     351.5,
-    image=entry_image_3
+    image=entry_image_2
 )
-entry_3 = Entry(
+entry_2 = Entry(
     bd=0,
     bg="#273F43",
-    fg="#000716",
+    fg="#FFFFFF",
+    font="Helvetica",
+    justify="left",
     highlightthickness=0
 )
-entry_3.place(
+entry_2.place(
     x=435.0,
     y=336.0,
     width=415.0,
@@ -151,20 +157,22 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
-entry_image_4 = PhotoImage(
-    file=relative_to_assets("entry_4.png"))
-entry_bg_4 = canvas.create_image(
+entry_image_3 = PhotoImage(
+    file=relative_to_assets("entry_3.png"))
+entry_bg_3 = canvas.create_image(
     642.5,
     423.5,
-    image=entry_image_4
+    image=entry_image_3
 )
-entry_4 = Entry(
+entry_3 = Entry(
     bd=0,
     bg="#273F43",
-    fg="#000716",
+    fg="#FFFFFF",
+    font="Helvetica",
+    justify="left",
     highlightthickness=0
 )
-entry_4.place(
+entry_3.place(
     x=435.0,
     y=408.0,
     width=415.0,
@@ -180,34 +188,48 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
-entry_image_5 = PhotoImage(
-    file=relative_to_assets("entry_5.png"))
-entry_bg_5 = canvas.create_image(
+entry_image_4 = PhotoImage(
+    file=relative_to_assets("entry_4.png"))
+entry_bg_4 = canvas.create_image(
     642.5,
     497.5,
-    image=entry_image_5
+    image=entry_image_4
 )
-entry_5 = Entry(
+entry_4 = Entry(
     bd=0,
     bg="#273F43",
-    fg="#000716",
+    fg="#FFFFFF",
+    font="Helvetica",
+    justify="left",
     highlightthickness=0
 )
-entry_5.place(
+entry_4.place(
     x=435.0,
     y=482.0,
     width=415.0,
     height=29.0
 )
 
-def get_inp():
+def valid():
     rooms = entry_1.get()
     baths = entry_2.get()
     land = entry_3.get()
     lat = entry_4.get()
     lon = entry_5.get()
-    pred = main.predict(rooms, baths, land, lat, lon)
-    return pred
+    inp = [rooms, baths, land, lat, lon]
+    for i in range(len(inp)):
+        inp[i] = float(inp[i])
+    return inp
+
+
+
+
+
+#def get_inp():
+    
+    
+    # pred = main.predict(rooms, baths, land, lat, lon)
+    # return pred
 
 
 button_image_1 = PhotoImage(
@@ -216,7 +238,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: [print(get_inp()), window.destroy()],
+    command=lambda: [print(valid()), window.destroy()],
     relief="flat"
 )
 button_1.place(

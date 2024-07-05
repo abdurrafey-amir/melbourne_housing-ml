@@ -11,7 +11,7 @@ model = joblib.load('housing-ml.joblib')
 # lon = float(input("longitude: "))
 
 
-def predict(rooms, baths, landsize, lat, lon):
-    prediction = model.predict([[rooms, baths, landsize, lat, lon]])
+def predict(rooms, baths, land, lat, lon):
+    prediction = model.predict([[rooms, baths, land, lat, lon]])
     return prediction
 
