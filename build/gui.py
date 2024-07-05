@@ -64,6 +64,58 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
+def valid_rooms():
+    rooms = entry_1.get()
+    try:
+        float(rooms)
+        print('true')
+        return True
+    except ValueError:
+        print('false')
+        return False
+
+def valid_bath():
+    baths = entry_2.get()
+    try:
+        float(baths)
+        print('true')
+        return True
+    except ValueError:
+        print('false')
+        return False
+
+def valid_land():
+    land = entry_3.get()
+    try:
+        float(land)
+        print('true')
+        return True
+    except ValueError:
+        print('false')
+        return False
+    
+def valid_lat():
+    lat = entry_4.get()
+    try:
+        float(lat)
+        print('true')
+        return True
+    except ValueError:
+        print('false')
+        return False
+    
+def valid_lon():
+    lon = entry_5.get()
+    try:
+        float(lon)
+        print('true')
+        return True
+    except ValueError:
+        print('false')
+        return False
+
+
+
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
@@ -77,7 +129,9 @@ entry_1 = Entry(
     fg="#FFFFFF",
     font="Helvetica",
     justify="left",
-    highlightthickness=0
+    highlightthickness=0,
+    validatecommand=valid_rooms,
+    validate="focusout"
 )
 entry_1.place(
     x=435.0,
@@ -210,20 +264,6 @@ entry_4.place(
     height=29.0
 )
 
-def valid():
-    rooms = entry_1.get()
-    baths = entry_2.get()
-    land = entry_3.get()
-    lat = entry_4.get()
-    lon = entry_5.get()
-    inp = [rooms, baths, land, lat, lon]
-    for i in range(len(inp)):
-        inp[i] = float(inp[i])
-    return inp
-
-
-
-
 
 #def get_inp():
     
@@ -238,7 +278,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: [print(valid()), window.destroy()],
+    command=lambda: [window.destroy()],
     relief="flat"
 )
 button_1.place(
