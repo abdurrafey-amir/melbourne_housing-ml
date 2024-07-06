@@ -68,53 +68,81 @@ def valid_rooms():
     rooms = entry_1.get()
     try:
         float(rooms)
-        print('true')
+        entry_1.config(
+            fg= '#FFFFFF'
+        )
         return True
     except ValueError:
-        print('false')
         return False
+    
+def invalid_rooms():
+    entry_1.config(
+        fg= 'red'
+    )
 
 def valid_bath():
     baths = entry_2.get()
     try:
         float(baths)
-        print('true')
+        entry_2.config(
+            fg= '#FFFFFF'
+        )
         return True
     except ValueError:
-        print('false')
         return False
+
+def invalid_bath():
+    entry_2.config(
+        fg= 'red'
+    )
 
 def valid_land():
     land = entry_3.get()
     try:
         float(land)
-        print('true')
+        entry_3.config(
+            fg= '#FFFFFF'
+        )
         return True
     except ValueError:
-        print('false')
         return False
     
+def invalid_land():
+    entry_3.config(
+        fg= 'red'
+    )
+
 def valid_lat():
     lat = entry_4.get()
     try:
         float(lat)
-        print('true')
+        entry_4.config(
+            fg= '#FFFFFF'
+        )
         return True
     except ValueError:
-        print('false')
         return False
     
+def invalid_lat():
+    entry_4.config(
+        fg= 'red'
+    )
+
 def valid_lon():
     lon = entry_5.get()
     try:
         float(lon)
-        print('true')
+        entry_5.config(
+            fg= '#FFFFFF'
+        )
         return True
     except ValueError:
-        print('false')
         return False
 
-
+def invalid_lon():
+    entry_5.config(
+        fg= 'red'
+    )
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
@@ -131,7 +159,8 @@ entry_1 = Entry(
     justify="left",
     highlightthickness=0,
     validatecommand=valid_rooms,
-    validate="focusout"
+    validate="focusout",
+    invalidcommand=invalid_rooms
 )
 entry_1.place(
     x=435.0,
@@ -162,7 +191,10 @@ entry_5 = Entry(
     fg="#FFFFFF",
     font="Helvetica",
     justify="left",
-    highlightthickness=0
+    highlightthickness=0,
+    validatecommand=valid_lon,
+    validate='focusout',
+    invalidcommand=invalid_lon
 )
 entry_5.place(
     x=435.0,
@@ -193,7 +225,10 @@ entry_2 = Entry(
     fg="#FFFFFF",
     font="Helvetica",
     justify="left",
-    highlightthickness=0
+    highlightthickness=0,
+    validatecommand=valid_bath,
+    validate='focusout',
+    invalidcommand=invalid_bath
 )
 entry_2.place(
     x=435.0,
@@ -224,7 +259,10 @@ entry_3 = Entry(
     fg="#FFFFFF",
     font="Helvetica",
     justify="left",
-    highlightthickness=0
+    highlightthickness=0,
+    validatecommand=valid_land,
+    validate='focusout',
+    invalidcommand=invalid_land
 )
 entry_3.place(
     x=435.0,
@@ -255,7 +293,10 @@ entry_4 = Entry(
     fg="#FFFFFF",
     font="Helvetica",
     justify="left",
-    highlightthickness=0
+    highlightthickness=0,
+    validatecommand=valid_lat,
+    validate='focusout',
+    invalidcommand=invalid_lat
 )
 entry_4.place(
     x=435.0,
