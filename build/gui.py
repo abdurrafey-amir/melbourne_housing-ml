@@ -11,7 +11,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 #importing other files
 import main
-from result.build import result
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\abdur\OneDrive\Desktop\housing-ml\build\assets\frame0")
@@ -64,13 +64,21 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
+
+rooms = entry_1.get()
+baths = entry_2.get()
+land = entry_3.get()
+lat = entry_4.get()
+lon = entry_5.get()
+
+
 def valid_rooms():
-    rooms = entry_1.get()
     try:
         float(rooms)
         entry_1.config(
             fg= '#FFFFFF'
         )
+        rooms = float(rooms)
         return True
     except ValueError:
         return False
@@ -81,12 +89,12 @@ def invalid_rooms():
     )
 
 def valid_bath():
-    baths = entry_2.get()
     try:
         float(baths)
         entry_2.config(
             fg= '#FFFFFF'
         )
+        baths = float(baths)
         return True
     except ValueError:
         return False
@@ -97,12 +105,12 @@ def invalid_bath():
     )
 
 def valid_land():
-    land = entry_3.get()
     try:
         float(land)
         entry_3.config(
             fg= '#FFFFFF'
         )
+        land = float(land)
         return True
     except ValueError:
         return False
@@ -113,12 +121,12 @@ def invalid_land():
     )
 
 def valid_lat():
-    lat = entry_4.get()
     try:
         float(lat)
         entry_4.config(
             fg= '#FFFFFF'
         )
+        lat = float(lat)
         return True
     except ValueError:
         return False
@@ -129,12 +137,12 @@ def invalid_lat():
     )
 
 def valid_lon():
-    lon = entry_5.get()
     try:
         float(lon)
         entry_5.config(
             fg= '#FFFFFF'
         )
+        lon = float(lon)
         return True
     except ValueError:
         return False
@@ -306,17 +314,21 @@ entry_4.place(
 )
 
 
-#def get_inp():
-    
-    
-    # pred = main.predict(rooms, baths, land, lat, lon)
-    # return pred
-
 def valid_all():
-    if valid_rooms() and valid_bath() and valid_land() and valid(lat) and valid(lon):
-        print('true')
+    if valid_rooms() and valid_bath() and valid_land() and valid_lat() and valid_lon():
         
-        return 'true'
+        # prediction
+        def predict():
+
+            pred = main.predict(rooms, baths, land, lat, lon)
+            return pred
+
+        # show new screen
+        from new.result import new_screen
+        new_screen(predict, window)
+
+    else:
+        print('Invalid values')
 
 
 
@@ -326,7 +338,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: [valid_all],
+    command=lambda: [valid_all()],
     relief="flat"
 )
 button_1.place(
