@@ -9,9 +9,9 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
-#importing main
+#importing other files
 import main
-
+from result.build import result
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\abdur\OneDrive\Desktop\housing-ml\build\assets\frame0")
@@ -312,6 +312,13 @@ entry_4.place(
     # pred = main.predict(rooms, baths, land, lat, lon)
     # return pred
 
+def valid_all():
+    if valid_rooms() and valid_bath() and valid_land() and valid(lat) and valid(lon):
+        print('true')
+        
+        return 'true'
+
+
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
@@ -319,7 +326,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: [window.destroy()],
+    command=lambda: [valid_all],
     relief="flat"
 )
 button_1.place(
