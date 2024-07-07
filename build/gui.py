@@ -64,15 +64,9 @@ canvas.create_text(
     font=("Inter", 30 * -1)
 )
 
-
-rooms = entry_1.get()
-baths = entry_2.get()
-land = entry_3.get()
-lat = entry_4.get()
-lon = entry_5.get()
-
-
 def valid_rooms():
+    global rooms
+    rooms = entry_1.get()
     try:
         float(rooms)
         entry_1.config(
@@ -89,6 +83,8 @@ def invalid_rooms():
     )
 
 def valid_bath():
+    global baths
+    baths = entry_2.get()
     try:
         float(baths)
         entry_2.config(
@@ -105,6 +101,8 @@ def invalid_bath():
     )
 
 def valid_land():
+    global land
+    land = entry_3.get()
     try:
         float(land)
         entry_3.config(
@@ -121,6 +119,8 @@ def invalid_land():
     )
 
 def valid_lat():
+    global lat
+    lat = entry_4.get()
     try:
         float(lat)
         entry_4.config(
@@ -137,6 +137,8 @@ def invalid_lat():
     )
 
 def valid_lon():
+    global lon
+    lon = entry_5.get()
     try:
         float(lon)
         entry_5.config(
