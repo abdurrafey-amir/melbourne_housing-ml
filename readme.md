@@ -1,3 +1,0 @@
-# Housing Price Predictor
-
-This was kind of a practice project I made for learning machine learning and making guis. The model has been trained on the data in the `melb_data.csv` file. To run the gui, run the `gui.py` file, input the number of rooms, bathrooms, landsize, latitude, and longitude. The model will predict the price of the house based on these features and output it. The gui was made using [Tkinter-designer](https://github.com/ParthJadhav/Tkinter-Designer) and figma.
